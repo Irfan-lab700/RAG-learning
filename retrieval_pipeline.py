@@ -34,8 +34,10 @@ def get_llm():
 
 def retrieve_documents(vector_store, llm):
 
-    print("\nRAG Chatbot")
+    print("\nConversational RAG Chatbot")
     print("Type 'exit' to quit\n")
+
+    chat_history = []
 
     while True:
 
@@ -44,6 +46,9 @@ def retrieve_documents(vector_store, llm):
         if query.lower() == "exit":
             print("Goodbye!")
             break
+
+        # Last few messages only
+        history = "\n".join(chat_history[-6:])
 
         results = vector_store.similarity_search(
             query=query,
@@ -57,10 +62,13 @@ def retrieve_documents(vector_store, llm):
         prompt = f"""
 You are a helpful AI assistant.
 
-Answer the question only using the provided context.
+Use chat history and context to answer.
 
-If the answer is not present in the context,
+If answer is not present in context,
 say: "I don't have enough information."
+
+Chat History:
+{history}
 
 Context:
 {context}
@@ -76,7 +84,12 @@ Answer:
         print("\nAnswer:")
         print(response.content)
 
+        # Store conversation
+        chat_history.append(f"User: {query}")
+        chat_history.append(f"Assistant: {response.content}")
+
         print("\nRetrieved Context:")
+
         for i, doc in enumerate(results):
             print(f"\nChunk {i+1}:")
             print(doc.page_content)
