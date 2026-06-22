@@ -15,9 +15,9 @@ def load_documents(docs_path = "docs"):
     documents = loader.load()
     if(len(documents) == 0):
         raise ValueError(f"No documents found in directory '{docs_path}'.")
-    for i,doc in enumerate(documents[:2]):
+    for i,doc in enumerate(documents[:3]):
         print(f"Document {i+1}: {doc.metadata.get('source', 'Unknown')}")
-        print(f"Content: {doc.page_content[:100]}...")
+        print(f"Content: {doc.page_content[:500]}...")
         print(f"Content_length: {len(doc.page_content)} characters")
     return documents
 
@@ -27,7 +27,8 @@ def split_documents(documents):
 
     text_splitter = CharacterTextSplitter(
         chunk_size=500,
-        chunk_overlap=50
+        chunk_overlap=50,
+        separator = "\n"
     )
 
     chunks = text_splitter.split_documents(documents)
@@ -36,7 +37,7 @@ def split_documents(documents):
 
     for i, chunk in enumerate(chunks[:3]):
         print(f"\nChunk {i+1}")
-        print(chunk.page_content[:100])
+        print(chunk.page_content[:500])
         print(f"Length: {len(chunk.page_content)}")
 
     return chunks

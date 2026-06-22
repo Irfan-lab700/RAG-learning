@@ -1,3 +1,21 @@
-Microsoft was founded by Bill Gates.
-Microsoft owns GitHub.
-Microsoft develops Windows.
+Microsoft is a multinational technology corporation founded in 1975 by Bill Gates and Paul Allen. The company started with a vision of placing a computer on every desk and in every home. Over the decades, Microsoft has become one of the world's largest software and technology companies.
+
+Microsoft develops the Windows operating system, which is one of the most widely used desktop operating systems globally. Windows powers millions of personal computers, business systems, and enterprise environments.
+
+The company develops Microsoft Office, a productivity suite that includes Word, Excel, PowerPoint, Outlook, and other business applications. These tools are widely used in schools, universities, businesses, and government organizations.
+
+Microsoft owns GitHub, the world's largest platform for software development and version control. GitHub enables developers to collaborate on projects, manage code repositories, and contribute to open-source software.
+
+The company also owns LinkedIn, a professional networking platform used by millions of professionals worldwide for job searching, networking, and career development.
+
+Microsoft Azure is one of the leading cloud computing platforms. Azure provides services such as virtual machines, databases, AI tools, networking infrastructure, storage solutions, and enterprise cloud applications.
+
+Microsoft develops Visual Studio, a popular integrated development environment used by software engineers for building applications across multiple platforms.
+
+The company has invested heavily in artificial intelligence. Microsoft integrates AI into many products, including Microsoft Copilot, Azure AI services, and enterprise productivity solutions.
+
+Microsoft maintains a strategic partnership with OpenAI. Through this partnership, Microsoft integrates advanced AI models into various products and cloud services.
+
+The company also operates Xbox, a major gaming platform that includes gaming consoles, online services, and game development studios. Xbox competes with other leading gaming ecosystems worldwide.
+
+Microsoft's headquarters is located in Redmond, Washington. The company employs thousands of engineers, researchers, and professionals working across software, cloud computing, artificial intelligence, gaming, and enterprise technology.
