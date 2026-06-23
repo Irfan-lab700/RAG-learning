@@ -1,9 +1,11 @@
 import os
 from langchain_community.document_loaders import TextLoader,DirectoryLoader
-from langchain_text_splitters import CharacterTextSplitter
+from langchain_text_splitters import CharacterTextSplitter, RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from dotenv import load_dotenv
+from langchain_experimental.text_splitter import SemanticChunker
+
 load_dotenv()
 
     
@@ -25,13 +27,17 @@ def load_documents(docs_path = "docs"):
 def split_documents(documents):
     print("Splitting documents into chunks...")
 
-    text_splitter = CharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=50,
-        separator = "\n"
-    )
+    embeddings = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2"
+)
 
-    chunks = text_splitter.split_documents(documents)
+    semantic_splitter = SemanticChunker(
+    embeddings=embeddings,
+    breakpoint_threshold_type="percentile",
+    breakpoint_threshold_amount=70
+)
+
+    chunks = semantic_splitter.split_documents(documents)
 
     print(f"Created {len(chunks)} chunks")
 
@@ -43,7 +49,7 @@ def split_documents(documents):
     return chunks
 
 
-def create_vector_store(chunks,persist_directory="db/Chroma_db"):
+def create_vector_store(chunks,persist_directory="db/Semantic_db"):
     print("Creating vector store...")
     embeddings = HuggingFaceEmbeddings(model_name = "sentence-transformers/all-MiniLM-L6-v2")
     vector_store = Chroma.from_documents(

@@ -6,7 +6,7 @@ from langchain_groq import ChatGroq
 load_dotenv()
 
 
-def load_vector_store(persist_directory="db/Chroma_db"):
+def load_vector_store(persist_directory="db/Semantic_db"):
     print("Loading vector database...")
 
     embeddings = HuggingFaceEmbeddings(
